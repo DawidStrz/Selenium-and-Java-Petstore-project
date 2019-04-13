@@ -1,19 +1,17 @@
 package page.objects;
 
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import driver.manager.DriverManager;
 
 public class LandingPage {
-    private WebDriver driver;
 
     @FindBy(css = "#Content a")
-    WebElement enterStoreLink;
+    private WebElement enterStoreLink;
 
-    public LandingPage(WebDriver driver) {
-        this.driver = driver;
-        PageFactory.initElements(driver, this);
+    public LandingPage() {
+        PageFactory.initElements(DriverManager.getWebDriver(), this);
     }
 
     public void clickOnEnterStoreLink() {
