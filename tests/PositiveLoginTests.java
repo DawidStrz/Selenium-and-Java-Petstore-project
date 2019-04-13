@@ -12,15 +12,15 @@ public class PositiveLoginTests extends TestBase {
 
     @Test
     public void asUserTryToLogInWithValidLoginAndPassword() {
-        TopMenuPage topMenuPage = new TopMenuPage(driver);
+        TopMenuPage topMenuPage = new TopMenuPage();
         topMenuPage.clickOnSignInLink();
 
-        LoginPage loginPage = new LoginPage(driver);
+        LoginPage loginPage = new LoginPage();
         loginPage.typeIntoUserNameField("j2ee");
         loginPage.typeIntoPasswordField("j2ee");
         loginPage.clickOnLoginButton();
 
-        FooterPage footerPage = new FooterPage(driver);
+        FooterPage footerPage = new FooterPage();
 
         assertTrue(footerPage.isBannerAfterLoginDisplayed());
     }

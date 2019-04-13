@@ -1,12 +1,11 @@
 package page.objects;
 
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import driver.manager.DriverManager;
 
 public class TopMenuPage {
-    private WebDriver driver;
 
     @FindBy(css = "#MenuContent a[href*='signonForm']")
     WebElement signInLink;
@@ -14,9 +13,8 @@ public class TopMenuPage {
     @FindBy(css = "#QuickLinks a[href*='FISH']")
     WebElement fishQuickLink;
 
-    public TopMenuPage(WebDriver driver) {
-        this.driver = driver;
-        PageFactory.initElements(driver, this);
+    public TopMenuPage() {
+        PageFactory.initElements(DriverManager.getWebDriver(), this);
     }
 
     public void clickOnSignInLink() {

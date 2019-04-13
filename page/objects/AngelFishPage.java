@@ -1,19 +1,17 @@
 package page.objects;
 
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import driver.manager.DriverManager;
 
 public class AngelFishPage {
-    private WebDriver driver;
 
     @FindBy(css = "a.Button[href*='EST-2']")
-    WebElement smallAngelfish;
+    private WebElement smallAngelfish;
 
-    public AngelFishPage(WebDriver driver) {
-        this.driver = driver;
-        PageFactory.initElements(driver, this);
+    public AngelFishPage() {
+        PageFactory.initElements(DriverManager.getWebDriver(), this);
     }
 
     public void addSmallAngelfishToCart() {

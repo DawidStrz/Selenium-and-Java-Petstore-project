@@ -9,19 +9,19 @@ public class FailedCheckoutTests extends TestBase {
 
     @Test
     public void failedTryToBuyFishWithoutSignOn() {
-        TopMenuPage topMenuPage = new TopMenuPage(driver);
+        TopMenuPage topMenuPage = new TopMenuPage();
         topMenuPage.clickOnFishQuickLink();
 
-        FishCatalogPage fishCatalogPage = new FishCatalogPage(driver);
+        FishCatalogPage fishCatalogPage = new FishCatalogPage();
         fishCatalogPage.clickOnAngelFishInCatalog();
 
-        AngelFishPage angelFishPage = new AngelFishPage(driver);
+        AngelFishPage angelFishPage = new AngelFishPage();
         angelFishPage.addSmallAngelfishToCart();
 
-        ShoppingCartPage shoppingCartPage = new ShoppingCartPage(driver);
+        ShoppingCartPage shoppingCartPage = new ShoppingCartPage();
         shoppingCartPage.proceedToCheckoutButton();
 
-        LoginPage loginPage = new LoginPage(driver);
+        LoginPage loginPage = new LoginPage();
         String warningMessage = loginPage.getWarningMessage();
 
         assertTrue(warningMessage.contains("You must sign on before attempting to check out."));
