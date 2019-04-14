@@ -1,5 +1,7 @@
 package page.objects;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
@@ -7,6 +9,8 @@ import driver.manager.DriverManager;
 import waits.WaitForElement;
 
 public class LoginPage {
+
+    private Logger logger = LogManager.getRootLogger();
 
     @FindBy(name = "username")
     private WebElement usernameField;
@@ -29,20 +33,24 @@ public class LoginPage {
         WaitForElement.waitUntilElementIsVisible(usernameField);
         usernameField.clear();
         usernameField.sendKeys(userName);
+        logger.info("Typed into User Name Field {}", userName);
     }
 
     public void typeIntoPasswordField(String password) {
         passwordField.clear();
         passwordField.sendKeys(password);
+        logger.info("Typed into Password Field {}", password);
     }
 
     public void clickOnLoginButton() {
         loginButton.click();
+        logger.info("Clicked on Login Button");
     }
 
     public String getWarningMessage() {
         WaitForElement.waitUntilElementIsVisible(messageLabel);
         String warningText = messageLabel.getText();
+        logger.info("Returned warning message was: {}", messageLabel);
         return warningText;
     }
 }
