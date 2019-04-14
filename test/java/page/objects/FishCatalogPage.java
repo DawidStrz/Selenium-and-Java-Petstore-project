@@ -18,10 +18,10 @@ public class FishCatalogPage {
         PageFactory.initElements(DriverManager.getWebDriver(), this);
     }
 
-    public void clickOnAngelFishInCatalog() {
-
+    public AngelFishPage clickOnAngelFishInCatalog() {
         angelfishInCatalog.click();
         logger.info("Clicked on Angel Fish in catalog");
+        return new AngelFishPage();
     }
 
 }

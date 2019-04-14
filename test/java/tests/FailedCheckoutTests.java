@@ -11,6 +11,7 @@ public class FailedCheckoutTests extends TestBase {
 
     @Test
     public void failedTryToBuyFishWithoutSignOn() {
+
         DriverUtils.navigateToPage(ANGELFISH_URL);
 
         AngelFishPage angelFishPage = new AngelFishPage();

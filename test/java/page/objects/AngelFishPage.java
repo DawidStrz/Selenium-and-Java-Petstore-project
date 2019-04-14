@@ -21,6 +21,6 @@ public class AngelFishPage {
     public ShoppingCartPage addSmallAngelfishToCart() {
         smallAngelfish.click();
         logger.info("Small Angel Fish Added");
-        return new ShoppingCartPage;
+        return new ShoppingCartPage();
     }
 }

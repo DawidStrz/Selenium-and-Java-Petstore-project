@@ -3,7 +3,6 @@ package tests;
 import driver.manager.DriverUtils;
 import org.testng.annotations.Test;
 import page.objects.LoginPage;
-
 import static navigation.ApplicationURLs.LOGIN_URL;
 import static org.testng.Assert.assertTrue;
 
