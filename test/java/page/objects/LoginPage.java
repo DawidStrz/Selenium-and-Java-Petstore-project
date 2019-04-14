@@ -53,7 +53,7 @@ public class LoginPage {
     public String getWarningMessage() {
         WaitForElement.waitUntilElementIsVisible(messageLabel);
         String warningText = messageLabel.getText();
-        logger.info("Returned warning message was: {}", messageLabel);
+        logger.info("Returned warning message was: {}", warningText);
         return warningText;
     }
 }
