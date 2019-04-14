@@ -22,15 +22,17 @@ public class TopMenuPage {
         PageFactory.initElements(DriverManager.getWebDriver(), this);
     }
 
-    public void clickOnSignInLink() {
+    public LoginPage clickOnSignInLink() {
         WaitForElement.waitUntilElementIsClickable(signInLink);
         signInLink.click();
-        logger.info("Clicked on Enter Store Link");
+        logger.info("Clicked on Sign In Link");
+        return new LoginPage();
     }
 
-    public void clickOnFishQuickLink() {
+    public FishCatalogPage clickOnFishQuickLink() {
         WaitForElement.waitUntilElementIsClickable(fishQuickLink);
         fishQuickLink.click();
-        logger.info("Clicked on Enter Store Link");
+        logger.info("Clicked on Fish Quick Link");
+        return new FishCatalogPage();
     }
 }
