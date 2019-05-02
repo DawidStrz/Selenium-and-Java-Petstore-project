@@ -11,7 +11,7 @@ import java.util.Properties;
 public class PropertiesLoader {
     private Logger logger = LogManager.getLogger(PropertiesLoader.class);
 
-    public Properties getPropertiesFromFile(String propertiesFileName){
+    public Properties getPropertiesFromFile(String propertiesFileName) {
         InputStream inputStream = null;
 
         Properties properties = new Properties();
@@ -20,13 +20,13 @@ public class PropertiesLoader {
 
             inputStream = getClass().getClassLoader().getResourceAsStream(propertiesFileName);
 
-            if(inputStream!=null){
+            if (inputStream != null) {
                 properties.load(inputStream);
                 logger.info("Successfully loaded properties for file: " + propertiesFileName);
-            } else{
+            } else {
                 throw new FileNotFoundException("Property file " + propertiesFileName + " not found in the classpath");
             }
-        } catch(IOException ex){
+        } catch (IOException ex) {
             ex.printStackTrace();
             throw new RuntimeException("Cannot load properties due to IOException");
         } finally {
@@ -39,7 +39,7 @@ public class PropertiesLoader {
     private void closeResource(InputStream inputStream) {
         try {
             inputStream.close();
-        } catch (IOException ex){
+        } catch (IOException ex) {
             ex.printStackTrace();
         }
     }
