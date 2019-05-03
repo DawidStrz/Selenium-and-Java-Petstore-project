@@ -8,7 +8,6 @@ import org.testng.annotations.Test;
 import page.objects.LoginPage;
 
 import static navigation.ApplicationURLs.LOGIN_URL;
-import static org.testng.Assert.assertEquals;
 
 public class FailedLoginTests extends TestBase {
 
@@ -26,8 +25,8 @@ public class FailedLoginTests extends TestBase {
                 .typeIntoPasswordField("NotProperPassword")
                 .clickOnLoginButton();
 
-        String warningMessage = loginPage.getWarningMessage();
-        assertEquals(warningMessage, "Invalid username or password. Signon failed.");
+        loginPage
+                .assertThatWarningIsDisplayed("Invalid username or password. Signon failed.");
     }
 
 }

@@ -16,14 +16,14 @@ public class DriverManager {
     private DriverManager() {
     }
 
-    public static void setWebDriver(BrowserType browserType){
+    public static void setWebDriver(BrowserType browserType) {
         WebDriver browser = null;
 
-        if(browserType == null){
+        if (browserType == null) {
             browserType = getBrowserToRun();
-            browser = new BrowserFactory(browserType,getIsRemoteRun()).getBrowser();
+            browser = new BrowserFactory(browserType, getIsRemoteRun()).getBrowser();
         } else {
-            browser = new BrowserFactory(browserType,getIsRemoteRun()).getBrowser();
+            browser = new BrowserFactory(browserType, getIsRemoteRun()).getBrowser();
         }
 
         browser = WebDriverEventListenerRegistrar.registerWebDriverEventListener(browser);
