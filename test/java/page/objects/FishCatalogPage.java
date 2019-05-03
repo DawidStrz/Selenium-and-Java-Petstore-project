@@ -9,7 +9,7 @@ import driver.manager.DriverManager;
 
 public class FishCatalogPage {
 
-    private Logger logger = LogManager.getRootLogger();
+    private Logger logger = LogManager.getLogger(FishCatalogPage.class);
 
     @FindBy(css = "#Catalog a[href*='FI-SW-01']")
     private WebElement angelfishInCatalog;

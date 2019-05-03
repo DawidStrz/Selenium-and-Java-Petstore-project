@@ -1,6 +1,6 @@
 package configuration;
 
-import driver.manager.BrowserType;
+import driver.BrowserType;
 
 public class TestRunProperties {
     public static BrowserType getBrowserToRun() {
@@ -11,7 +11,7 @@ public class TestRunProperties {
         return Boolean.parseBoolean(ConfigurationProperties.getProperties().getProperty("is.remote.run"));
     }
 
-    public static String getGridUrl(){
+    public static String getGridUrl() {
         return ConfigurationProperties.getProperties().getProperty("grid.url");
     }
 }

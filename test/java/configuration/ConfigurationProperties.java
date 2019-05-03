@@ -5,15 +5,15 @@ import java.util.Properties;
 public class ConfigurationProperties {
     private static Properties properties;
 
-    private ConfigurationProperties(){
+    private ConfigurationProperties() {
     }
 
-    public static void setProperties(Properties properties){
+    public static void setProperties(Properties properties) {
         ConfigurationProperties.properties = properties;
     }
 
-    public static Properties getProperties(){
-        if(properties==null){
+    public static Properties getProperties() {
+        if (properties == null) {
             throw new IllegalStateException("Please set properties using setProperties() before calling getProperties()");
         }
         return properties;
