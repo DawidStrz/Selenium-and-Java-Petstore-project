@@ -1,4 +1,4 @@
-package driver.manager;
+package driver;
 
 import configuration.LocalWebDriverProperties;
 import configuration.TestRunProperties;
@@ -71,14 +71,15 @@ public class BrowserFactory {
             }
         }
     }
-        private WebDriver getRemoteWebDriver(MutableCapabilities mutableCapabilities){
-            RemoteWebDriver remoteWebDriver = null;
-            try {
-                remoteWebDriver = new RemoteWebDriver(new URL(TestRunProperties.getGridUrl()),mutableCapabilities);
-            } catch (MalformedURLException e) {
-                e.printStackTrace();
-                throw new RuntimeException("Failed to create RemoteWebDriver due to:" + e.getMessage());
-            }
-            return remoteWebDriver;
+
+    private WebDriver getRemoteWebDriver(MutableCapabilities mutableCapabilities) {
+        RemoteWebDriver remoteWebDriver = null;
+        try {
+            remoteWebDriver = new RemoteWebDriver(new URL(TestRunProperties.getGridUrl()), mutableCapabilities);
+        } catch (MalformedURLException e) {
+            e.printStackTrace();
+            throw new RuntimeException("Failed to create RemoteWebDriver due to:" + e.getMessage());
         }
+        return remoteWebDriver;
+    }
 }

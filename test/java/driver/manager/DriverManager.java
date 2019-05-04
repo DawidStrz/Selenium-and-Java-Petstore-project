@@ -1,31 +1,53 @@
 package driver.manager;
 
+import driver.BrowserFactory;
+import driver.BrowserType;
+import driver.listeners.WebDriverEventListenerRegistrar;
 import org.openqa.selenium.WebDriver;
 
 import static configuration.TestRunProperties.getBrowserToRun;
 import static configuration.TestRunProperties.getIsRemoteRun;
-import static driver.manager.BrowserType.FIREFOX;
+import static driver.BrowserType.FIREFOX;
 
 public class DriverManager {
-    private static WebDriver driver;
+    private static ThreadLocal<WebDriver> webDriverThreadLocal = new ThreadLocal<>();
+    private static ThreadLocal<BrowserType> browserTypeThreadLocal = new ThreadLocal<>();
 
-    private DriverManager(){
+    private DriverManager() {
     }
 
-    public static WebDriver getWebDriver(){
+    public static void setWebDriver(BrowserType browserType){
+        WebDriver browser = null;
 
-        if(driver==null){
-            driver = new BrowserFactory(getBrowserToRun(),getIsRemoteRun()).getBrowser();
+        if(browserType == null){
+            browserType = getBrowserToRun();
+            browser = new BrowserFactory(browserType,getIsRemoteRun()).getBrowser();
+        } else {
+            browser = new BrowserFactory(browserType,getIsRemoteRun()).getBrowser();
         }
-        return driver;
+
+        browser = WebDriverEventListenerRegistrar.registerWebDriverEventListener(browser);
+
+        browserTypeThreadLocal.set(browserType);
+
+        webDriverThreadLocal.set(browser);
     }
 
-    public static void disposeDriver(){
-        driver.close();
-        if(!getBrowserToRun().equals(FIREFOX)){
-            driver.quit();
+    public static WebDriver getWebDriver() {
+
+        if (webDriverThreadLocal.get() == null) {
+            throw new IllegalStateException("WebDriver Instance was null. Create instance of WebDriver using setWebDriver.");
         }
-        driver = null;
+        return webDriverThreadLocal.get();
+    }
+
+    public static void disposeDriver() {
+        webDriverThreadLocal.get().close();
+        if (!browserTypeThreadLocal.get().equals(FIREFOX)) {
+            webDriverThreadLocal.get().quit();
+        }
+        webDriverThreadLocal.remove();
+        browserTypeThreadLocal.remove();
     }
 
 }
