@@ -1,5 +1,6 @@
 package page.objects;
 
+import generic.assertions.AssertWebElement;
 import io.qameta.allure.Step;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -19,12 +20,13 @@ public class FooterPage {
     public FooterPage() {
         PageFactory.initElements(DriverManager.getWebDriver(), this);
     }
-    @Step("Getting is dog banner is displayed")
-    public boolean isBannerAfterLoginDisplayed() {
+
+    @Step("Assert that element dog banner is displayed")
+    public FooterPage assertThatDogBannerIsDisplayed() {
+        logger.info("Checking if dog banner is displayed");
         WaitForElement.waitUntilElementIsVisible(footerBanner);
-        boolean isDisplayed = footerBanner.isDisplayed();
-        logger.info("Returning status of banner after login: {}",isDisplayed);
-        return isDisplayed;
+        AssertWebElement.assertThat(footerBanner).isDisplayed();
+        return this;
     }
 
 }

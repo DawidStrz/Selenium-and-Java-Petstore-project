@@ -13,6 +13,7 @@ import java.util.Arrays;
 public class DriverEventListener implements WebDriverEventListener {
 
     private static Logger logger = LogManager.getLogger(DriverEventListener.class);
+
     @Override
     public void beforeAlertAccept(WebDriver driver) {
         logger.info("Trying to accept alert");

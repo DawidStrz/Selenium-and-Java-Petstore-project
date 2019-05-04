@@ -22,6 +22,7 @@ public class TopMenuPage {
     public TopMenuPage() {
         PageFactory.initElements(DriverManager.getWebDriver(), this);
     }
+
     @Step("Click on Sign In Link")
     public LoginPage clickOnSignInLink() {
         WaitForElement.waitUntilElementIsClickable(signInLink);
@@ -29,6 +30,7 @@ public class TopMenuPage {
         logger.info("Clicked on Sign In Link");
         return new LoginPage();
     }
+
     @Step("Click on Fish Quick Link")
     public FishCatalogPage clickOnFishQuickLink() {
         WaitForElement.waitUntilElementIsClickable(fishQuickLink);
